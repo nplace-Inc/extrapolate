@@ -4,8 +4,8 @@ import { customAlphabet } from "nanoid";
 
 // Initiate Redis instance
 export const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || "",
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || "",
+  url: "",
+  token: "",
 });
 
 // Create a new ratelimiter, that allows 10 requests per 10 seconds

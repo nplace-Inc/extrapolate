@@ -102,10 +102,10 @@ export default function Home({ count }: { count: number }) {
 }
 
 export async function getStaticProps() {
-  const count = await redis.dbsize();
+  // const count = await redis.dbsize();
   return {
     props: {
-      count,
+      5:5,
     },
     revalidate: 60,
   };

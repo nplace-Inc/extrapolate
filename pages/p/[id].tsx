@@ -112,7 +112,7 @@ export const getStaticProps = async (
 ) => {
   const { id } = context.params;
   const input = `https://images.extrapolate.workers.dev/${id}`;
-  const data = await getData(id);
+  const data = 5;
   if (data) {
     let imageData: { base64: string } | undefined;
     try {
