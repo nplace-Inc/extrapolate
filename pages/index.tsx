@@ -9,8 +9,22 @@ import PhotoBooth from "@/components/home/photo-booth";
 import { redis } from "@/lib/upstash";
 import Tooltip from "@/components/shared/tooltip";
 import { nFormatter } from "@/lib/utils";
+import React, { useState, useEffect } from 'react';
+import Web3 from 'web3';
 
 export default function Home() {
+async function connectWallet() {
+  if (typeof window.ethereum !== 'undefined') {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    } catch (error) {
+      console.error('Error connecting to MetaMask:', error);
+      alert('连接 MetaMask 钱包失败，请重试。');
+    }
+  } else {
+    alert('请先安装 MetaMask 扩展。');
+  }
+}
   return (
     <Layout>
       <motion.div
@@ -80,7 +94,7 @@ export default function Home() {
         <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="-mb-4">
           <button
             className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-6 py-3 text-lg text-white transition-colors hover:bg-white hover:text-black"
-            onClick={() => {return}}
+            onClick={connectWallet}
           >
             <Wallet className="h-5 w-5 text-white group-hover:text-black" />
             <p>Connect Wallet</p>
