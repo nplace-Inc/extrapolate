@@ -3,6 +3,7 @@ import { redis } from "@/lib/upstash";
 import { verifySignature } from "@upstash/qstash/nextjs";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  return;
   const { id } = req.query as {
     id: string;
   };
