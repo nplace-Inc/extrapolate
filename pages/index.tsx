@@ -4,17 +4,15 @@ import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import { Twitter } from "@/components/shared/icons";
 import { useUploadModal } from "@/components/home/upload-modal";
-import { Upload } from "lucide-react";
+import { Wallet } from "lucide-react";
 import PhotoBooth from "@/components/home/photo-booth";
 import { redis } from "@/lib/upstash";
 import Tooltip from "@/components/shared/tooltip";
 import { nFormatter } from "@/lib/utils";
 
-export default function Home({ count }: { count: number }) {
-  const { UploadModal, setShowUploadModal } = useUploadModal();
+export default function Home() {
   return (
     <Layout>
-      <UploadModal />
       <motion.div
         className="max-w-2xl px-5 xl:px-0"
         initial="hidden"
@@ -30,7 +28,7 @@ export default function Home({ count }: { count: number }) {
           },
         }}
       >
-        <motion.a
+        {/* <motion.a
           variants={FADE_DOWN_ANIMATION_VARIANTS}
           href="https://twitter.com/steventey/status/1616505632001232896"
           target="_blank"
@@ -41,12 +39,12 @@ export default function Home({ count }: { count: number }) {
           <p className="text-sm font-semibold text-[#1d9bf0]">
             Introducing Extrapolate
           </p>
-        </motion.a>
+        </motion.a> */}
         <motion.h1
           className="bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm md:text-7xl md:leading-[5rem]"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
-          <Balancer>See how well you age with AI</Balancer>
+          <Balancer>AI 算命</Balancer>
         </motion.h1>
         <motion.p
           className="mt-6 text-center text-gray-500 md:text-xl"
@@ -81,15 +79,12 @@ export default function Home({ count }: { count: number }) {
         </motion.p>
         <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="-mb-4">
           <button
-            className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
-            onClick={() => setShowUploadModal(true)}
+            className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-6 py-3 text-lg text-white transition-colors hover:bg-white hover:text-black"
+            onClick={() => {return}}
           >
-            <Upload className="h-5 w-5 text-white group-hover:text-black" />
-            <p>Upload a photo</p>
+            <Wallet className="h-5 w-5 text-white group-hover:text-black" />
+            <p>Connect Wallet</p>
           </button>
-          <p className="mt-2 text-center text-sm text-gray-500">
-            {nFormatter(count)} photos generated and counting!
-          </p>
         </motion.div>
         <PhotoBooth
           input="https://images.extrapolate.workers.dev/input.jpg"
@@ -104,9 +99,7 @@ export default function Home({ count }: { count: number }) {
 export async function getStaticProps() {
   // const count = await redis.dbsize();
   return {
-    props: {
-      5:5,
-    },
+    props: {},
     revalidate: 60,
   };
 }

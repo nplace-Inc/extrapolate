@@ -40,68 +40,11 @@ export default function Layout({
             ></Image>
             <p>Extrapolate</p>
           </Link>
-          <div className="flex items-center space-x-4">
-            <a
-              href="https://vercel.com/templates/next.js/extrapolate"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                width="1155"
-                height="1000"
-                viewBox="0 0 1155 1000"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-              >
-                <path d="M577.344 0L1154.69 1000H0L577.344 0Z" fill="black" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com/steven-tey/extrapolate"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github />
-            </a>
-          </div>
         </div>
       </div>
       <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
         {children}
       </main>
-      <div className="absolute w-full border-t border-gray-200 bg-white py-5 text-center">
-        <p className="text-gray-500">
-          Powered by{" "}
-          <a
-            className="font-semibold text-gray-600 transition-colors hover:text-black"
-            href="https://vercel.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vercel
-          </a>
-          ,{" "}
-          <a
-            className="font-semibold text-gray-600 transition-colors hover:text-black"
-            href="https://replicate.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Replicate
-          </a>{" "}
-          and{" "}
-          <a
-            className="font-semibold text-gray-600 transition-colors hover:text-black"
-            href="https://upstash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Upstash
-          </a>
-          .
-        </p>
-      </div>
     </>
   );
 }
