@@ -150,7 +150,7 @@ export default function Home() {
               <p>{isGenerating ? "Generating" : "Generate"}</p>
             </button>
           )}
-	{generatedImage ? (
+	{generatedImage && (
 	  <img
 	    className="block mx-auto mt-6 max-w-full z-9999"
 	    src={generatedImage}
