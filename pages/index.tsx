@@ -108,7 +108,7 @@ export default function Home() {
               className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-6 py-3 text-lg text-white transition-colors hover:bg-white hover:text-black"
               onClick={generate}
             >
-              <GenerateIcon className="h-5 w-5 text-white group-hover:text-black" />
+              <Wallet className="h-5 w-5 text-white group-hover:text-black" />
               <p>Generate</p>
             </button>
           )}
