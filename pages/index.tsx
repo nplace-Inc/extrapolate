@@ -148,7 +148,6 @@ export default function Home() {
               <p>Generate</p>
             </button>
           )}
-        </motion.div>
 	{generatedImage ? (
 	  <img
 	    className="block mx-auto mt-6 max-w-full z-9999"
@@ -158,6 +157,7 @@ export default function Home() {
 	) : (
 	  <p>图片正在生成中...</p>
 	)}
+        </motion.div>
       </motion.div>
     </Layout>
   );
