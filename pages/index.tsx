@@ -139,7 +139,7 @@ export default function Home() {
           )}
 	{generatedImage && (
 	  <img
-	    className="block mx-auto rounded-2xl ring-4 ring-gray-300 filter brightness+110 hover:brightness+100 transition duration-500 ease-in-out mt-6 max-w-full z-9999"
+	    className="block mx-auto w-full lg:w-4/5 xl:w-3/4 mx-auto my-8 shadow-lg rounded-lg transform hover:scale-105 hover:rotate-3 transition-all duration-500 ease-in-out border-4 border-indigo-500 hover:border-green-500 object-cover mt-6 max-w-full z-9999"
 	    src={generatedImage}
 	    alt="Generated Image"
 	  />
