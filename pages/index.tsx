@@ -139,7 +139,7 @@ export default function Home() {
           )}
 	{generatedImage && (
 	  <img
-	    className="block mx-auto mt-6 max-w-full z-9999"
+	    className="block mx-auto rounded-full border border-black mt-6 max-w-full z-9999"
 	    src={generatedImage}
 	    alt="Generated Image"
 	  />
