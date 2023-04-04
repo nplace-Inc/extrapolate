@@ -151,7 +151,7 @@ export default function Home() {
         </motion.div>
 	{generatedImage ? (
 	  <img
-	    className="block mx-auto mt-6 max-w-full"
+	    className="block mx-auto mt-6 max-w-full z-9999"
 	    src={generatedImage}
 	    alt="Generated Image"
 	  />
