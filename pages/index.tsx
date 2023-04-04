@@ -14,11 +14,13 @@ import Web3 from 'web3';
 
 export default function Home() {
   const [isConnected, setIsConnected] = useState(false);
+  let userAddress;
 
   async function connectWallet() {
     if (typeof window.ethereum !== 'undefined') {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        userAddress = accounts[0];
         setIsConnected(true);
       } catch (error) {
         console.error('Error connecting to MetaMask:', error);
@@ -28,6 +30,38 @@ export default function Home() {
       alert('请先安装 MetaMask 扩展。');
     }
   }
+  
+  async function generateImage() {
+  if (!userAddress) {
+    alert('请先连接您的 MetaMask 钱包。');
+    return;
+  }
+
+  try {
+    const response = await fetch('https://flask-web-ukekpiikru.cn-hangzhou.fcapp.run/address2image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ address: userAddress }),
+	  timeout: 180000,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const base64Image = data.image;
+//       generatedImage.src = `data:image/png;base64,${base64Image}`;
+//       generatedImage.classList.remove('hidden');
+    } else {
+      throw new Error('Error generating image');
+    }
+  } catch (error) {
+    console.error('Error generating image:', error);
+    alert('生成图片失败，请重试。');
+  }
+}
+  
+  
   return (
     <Layout>
       <motion.div
@@ -106,7 +140,7 @@ export default function Home() {
           ) : (
             <button
               className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-6 py-3 text-lg text-white transition-colors hover:bg-white hover:text-black"
-              onClick={generate}
+              onClick={generateImage}
             >
               <Wallet className="h-5 w-5 text-white group-hover:text-black" />
               <p>Generate</p>
