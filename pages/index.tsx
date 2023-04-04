@@ -154,8 +154,6 @@ export default function Home() {
 	    src={generatedImage}
 	    alt="Generated Image"
 	  />
-	) : (
-	  <p>图片正在生成中...</p>
 	)}
         </motion.div>
       </motion.div>
