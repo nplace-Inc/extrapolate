@@ -14,13 +14,14 @@ import Web3 from 'web3';
 
 export default function Home() {
   const [isConnected, setIsConnected] = useState(false);
-  let userAddress;
+  const [userAddress, setUserAddress] = useState('');
 
   async function connectWallet() {
     if (typeof window.ethereum !== 'undefined') {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        userAddress = accounts[0];
+        const userAddress = accounts[0];
+	setUserAddress(userAddress);
         setIsConnected(true);
       } catch (error) {
         console.error('Error connecting to MetaMask:', error);
