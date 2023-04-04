@@ -139,7 +139,7 @@ export default function Home() {
           )}
 	{generatedImage && (
 	  <img
-	    className="block mx-auto rounded-2xl ring-4 ring-gray-300 filter brightness-150 hover:brightness+150 transition duration-500 ease-in-out mt-6 max-w-full z-9999"
+	    className="block mx-auto rounded-2xl ring-4 ring-gray-300 filter brightness-110 hover:brightness+110 transition duration-500 ease-in-out mt-6 max-w-full z-9999"
 	    src={generatedImage}
 	    alt="Generated Image"
 	  />
