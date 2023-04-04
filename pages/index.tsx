@@ -45,7 +45,6 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ address: userAddress }),
-	  timeout: 180000,
     });
 
     if (response.ok) {
