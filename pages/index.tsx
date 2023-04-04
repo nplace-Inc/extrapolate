@@ -13,6 +13,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 
 export default function Home() {
+  const [isGenerating, setIsGenerating] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [userAddress, setUserAddress] = useState('');
   const [generatedImage, setGeneratedImage] = useState('');
@@ -38,7 +39,7 @@ export default function Home() {
     alert('请先连接您的 MetaMask 钱包。');
     return;
   }
-
+  setIsGenerating(true);
   try {
     const response = await fetch('https://flask-web-ukekpiikru.cn-hangzhou.fcapp.run/address2image', {
       method: 'POST',
@@ -49,15 +50,16 @@ export default function Home() {
     });
 
     if (response.ok) {
+      setIsGenerating(false);
       const data = await response.json();
       const base64Image = data.image;
-//       generatedImage.src = `data:image/png;base64,${base64Image}`;
-//       generatedImage.classList.remove('hidden');
       setGeneratedImage(`data:image/png;base64,${base64Image}`);
     } else {
+      setIsGenerating(false);
       throw new Error('Error generating image');
     }
   } catch (error) {
+    setIsGenerating(false);
     console.error('Error generating image:', error);
     alert('生成图片失败，请重试。');
   }
@@ -145,7 +147,7 @@ export default function Home() {
               onClick={generateImage}
             >
               <Wallet className="h-5 w-5 text-white group-hover:text-black" />
-              <p>Generate</p>
+              <p>{isGenerating ? "Generating" : "Generate"}</p>
             </button>
           )}
 	{generatedImage ? (
