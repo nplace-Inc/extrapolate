@@ -147,7 +147,7 @@ export default function Home() {
               onClick={generateImage}
             >
               <Wallet className="h-5 w-5 text-white group-hover:text-black" />
-              <p>{isGenerating ? "Generating" : "Generate"}</p>
+              <p>{isGenerating ? "Generating..." : "Generate"}</p>
             </button>
           )}
 	{generatedImage && (
