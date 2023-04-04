@@ -15,6 +15,7 @@ import Web3 from 'web3';
 export default function Home() {
   const [isConnected, setIsConnected] = useState(false);
   const [userAddress, setUserAddress] = useState('');
+  const [generatedImage, setGeneratedImage] = useState('');
 
   async function connectWallet() {
     if (typeof window.ethereum !== 'undefined') {
@@ -52,6 +53,7 @@ export default function Home() {
       const base64Image = data.image;
 //       generatedImage.src = `data:image/png;base64,${base64Image}`;
 //       generatedImage.classList.remove('hidden');
+      setGeneratedImage(`data:image/png;base64,${base64Image}`);
     } else {
       throw new Error('Error generating image');
     }
@@ -147,11 +149,18 @@ export default function Home() {
             </button>
           )}
         </motion.div>
-        <PhotoBooth
+	{generatedImage && (
+	  <img
+	    className="block mx-auto mt-6 max-w-full"
+	    src={generatedImage}
+	    alt="Generated Image"
+	  />
+        )}
+<!--         <PhotoBooth
           input="https://images.extrapolate.workers.dev/input.jpg"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMklEQVR4nAEnANj/ALjj/4mIh+P+/9Lv/wCn0+xeLxV9cWWUtL0AUz0tKQAAeVU0j4d/y2cTsDiuaawAAAAASUVORK5CYII="
           output="https://images.extrapolate.workers.dev/output.gif"
-        />
+        /> -->
       </motion.div>
     </Layout>
   );
